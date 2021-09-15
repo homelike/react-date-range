@@ -493,7 +493,7 @@ class Calendar extends PureComponent {
               isVertical ? this.styles.monthsVertical : this.styles.monthsHorizontal
             )}>
             {new Array(this.props.months).fill(null).map((_, i) => {
-              let monthStep = addMonths(this.state.focusedDate, i);;
+              let monthStep = addMonths(this.state.focusedDate, i);
               if (this.props.calendarFocus === 'backwards') {
                 monthStep = subMonths(this.state.focusedDate, this.props.months - 1 - i);
               }
@@ -559,6 +559,7 @@ Calendar.defaultProps = {
   calendarFocus: 'forwards',
   preventSnapRefocus: false,
   ariaLabels: {},
+  preventFocusOnDateChange: false,
 };
 
 Calendar.propTypes = {
@@ -613,6 +614,7 @@ Calendar.propTypes = {
   dragSelectionEnabled: PropTypes.bool,
   fixedHeight: PropTypes.bool,
   calendarFocus: PropTypes.string,
+  preventFocusOnDateChange: PropTypes.bool,
   preventSnapRefocus: PropTypes.bool,
   ariaLabels: ariaLabelsShape,
 };
