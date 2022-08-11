@@ -404,6 +404,7 @@ class Calendar extends PureComponent {
       direction,
       disabledDates,
       disabledDay,
+      withInRangeDay,
       maxDate,
       minDate,
       rangeColors,
@@ -467,6 +468,7 @@ class Calendar extends PureComponent {
                       dateOptions={this.dateOptions}
                       disabledDates={disabledDates}
                       disabledDay={disabledDay}
+                      withInRangeDay={withInRangeDay}
                       month={monthStep}
                       onDragSelectionStart={this.onDragSelectionStart}
                       onDragSelectionEnd={this.onDragSelectionEnd}
@@ -508,6 +510,7 @@ class Calendar extends PureComponent {
                   dateOptions={this.dateOptions}
                   disabledDates={disabledDates}
                   disabledDay={disabledDay}
+                  withInRangeDay={withInRangeDay}
                   month={monthStep}
                   onDragSelectionStart={this.onDragSelectionStart}
                   onDragSelectionEnd={this.onDragSelectionEnd}
@@ -531,6 +534,7 @@ Calendar.defaultProps = {
   showMonthAndYearPickers: true,
   disabledDates: [],
   disabledDay: () => {},
+  withInRangeDay: () => {},
   classNames: {},
   locale: defaultLocale,
   ranges: [],
@@ -567,6 +571,7 @@ Calendar.propTypes = {
   showMonthAndYearPickers: PropTypes.bool,
   disabledDates: PropTypes.array,
   disabledDay: PropTypes.func,
+  withInRangeDay: PropTypes.func,
   minDate: PropTypes.object,
   maxDate: PropTypes.object,
   date: PropTypes.object,

@@ -2,7 +2,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { startOfDay, format, isSameDay, isAfter, isBefore, endOfDay } from 'date-fns';
+import {
+  startOfDay,
+  format,
+  isSameDay,
+  isAfter,
+  isBefore,
+  endOfDay,
+  isValid,
+  addDays,
+} from 'date-fns';
 
 class DayCell extends Component {
   constructor(props, context) {
@@ -66,12 +75,14 @@ class DayCell extends Component {
       isStartOfMonth,
       isEndOfMonth,
       disabled,
+      isWithInRangeDay,
       styles,
     } = this.props;
 
     return classnames(styles.day, {
       [styles.dayPassive]: isPassive,
       [styles.dayDisabled]: disabled,
+      [styles.withInRangeDay]: isWithInRangeDay,
       [styles.dayToday]: isToday,
       [styles.dayWeekend]: isWeekend,
       [styles.dayStartOfWeek]: isStartOfWeek,
@@ -103,7 +114,7 @@ class DayCell extends Component {
     );
   };
   renderSelectionPlaceholders = () => {
-    const { styles, ranges, day } = this.props;
+    const { styles, ranges, day, minimumTimeFromStart, focusedRange } = this.props;
     if (this.props.displayMode === 'date') {
       let isSelected = isSameDay(this.props.day, this.props.date);
       return isSelected ? (
@@ -120,16 +131,25 @@ class DayCell extends Component {
       startDate = startDate ? endOfDay(startDate) : null;
       endDate = endDate ? startOfDay(endDate) : null;
       const isInRange =
-        (!startDate || isAfter(day, startDate)) && (!endDate || isBefore(day, endDate));
+        (focusedRange[1] === 1 &&
+          isValid(startDate) &&
+          isAfter(day, startDate) &&
+          isBefore(day, addDays(minimumTimeFromStart, 1))) ||
+        (isValid(endDate) &&
+          isValid(startDate) &&
+          isAfter(day, startDate) &&
+          isBefore(day, endDate));
       const isStartEdge = !isInRange && isSameDay(day, startDate);
       const isEndEdge = !isInRange && isSameDay(day, endDate);
-      if (isInRange || isStartEdge || isEndEdge) {
+      const isFirstAvailableEndDay = !isValid(endDate) && isSameDay(minimumTimeFromStart, day);
+      if (isInRange || isStartEdge || isEndEdge || isFirstAvailableEndDay) {
         return [
           ...result,
           {
             isStartEdge,
             isEndEdge: isEndEdge,
             isInRange,
+            isFirstAvailableEndDay,
             ...range,
           },
         ];
@@ -144,8 +164,11 @@ class DayCell extends Component {
           [styles.startEdge]: range.isStartEdge,
           [styles.endEdge]: range.isEndEdge,
           [styles.inRange]: range.isInRange,
+          [styles.firstAvailableEndDay]: range.isFirstAvailableEndDay,
         })}
-        style={{ color: range.color || this.props.color }}
+        style={{
+          color: range.color || this.props.color,
+        }}
       />
     ));
   };
@@ -169,11 +192,10 @@ class DayCell extends Component {
         style={{ color: this.props.color }}>
         {this.renderSelectionPlaceholders()}
         {this.renderPreviewPlaceholder()}
-        <span className={this.props.styles.dayNumber}>
-          {
-            dayContentRenderer?.(this.props.day) ||
+        <span className={classnames(this.props.styles.dayNumber)}>
+          {dayContentRenderer?.(this.props.day, this.props.disabled) || (
             <span>{format(this.props.day, this.props.dayDisplayFormat)}</span>
-          }
+          )}
         </span>
       </button>
     );
@@ -197,6 +219,7 @@ DayCell.propTypes = {
   dayDisplayFormat: PropTypes.string,
   date: PropTypes.object,
   ranges: PropTypes.arrayOf(rangeShape),
+  availableFrom: PropTypes.object,
   preview: PropTypes.shape({
     startDate: PropTypes.object,
     endDate: PropTypes.object,
@@ -205,6 +228,8 @@ DayCell.propTypes = {
   onPreviewChange: PropTypes.func,
   previewColor: PropTypes.string,
   disabled: PropTypes.bool,
+  isWithInRangeDay: PropTypes.bool,
+  minimumTimeFromStart: PropTypes.object,
   isPassive: PropTypes.bool,
   isToday: PropTypes.bool,
   isWeekend: PropTypes.bool,
@@ -213,6 +238,7 @@ DayCell.propTypes = {
   isStartOfMonth: PropTypes.bool,
   isEndOfMonth: PropTypes.bool,
   color: PropTypes.string,
+  focusedRange: PropTypes.arrayOf(PropTypes.number),
   displayMode: PropTypes.oneOf(['dateRange', 'date']),
   styles: PropTypes.object,
   onMouseDown: PropTypes.func,

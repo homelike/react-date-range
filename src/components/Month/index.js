@@ -36,7 +36,15 @@ function renderWeekdays(styles, dateOptions, weekdayDisplayFormat) {
 class Month extends PureComponent {
   render() {
     const now = new Date();
-    const { displayMode, focusedRange, drag, styles, disabledDates, disabledDay } = this.props;
+    const {
+      displayMode,
+      focusedRange,
+      drag,
+      styles,
+      disabledDates,
+      disabledDay,
+      withInRangeDay,
+    } = this.props;
     const minDate = this.props.minDate && startOfDay(this.props.minDate);
     const maxDate = this.props.maxDate && endOfDay(this.props.maxDate);
     const monthDisplay = getMonthDisplayRange(
@@ -76,6 +84,9 @@ class Month extends PureComponent {
               const isDisabledSpecifically = disabledDates.some(disabledDate =>
                 isSameDay(disabledDate, day)
               );
+
+              const isWithInRangeDay = withInRangeDay(day);
+
               const isDisabledDay = disabledDay(day);
               return (
                 <DayCell
@@ -91,6 +102,7 @@ class Month extends PureComponent {
                   isEndOfMonth={isEndOfMonth}
                   key={index}
                   disabled={isOutsideMinMax || isDisabledSpecifically || isDisabledDay}
+                  isWithInRangeDay={isWithInRangeDay}
                   isPassive={
                     !isWithinInterval(day, {
                       start: monthDisplay.startDateOfMonth,
@@ -123,6 +135,7 @@ Month.propTypes = {
   dateOptions: PropTypes.object,
   disabledDates: PropTypes.array,
   disabledDay: PropTypes.func,
+  withInRangeDay: PropTypes.func,
   preview: PropTypes.shape({
     startDate: PropTypes.object,
     endDate: PropTypes.object,
