@@ -20,9 +20,16 @@ class DayCell extends Component {
     this.state = {
       hover: false,
       active: false,
+      notificationActive: false,
     };
   }
-
+  componentDidUpdate() {
+    const { handleOnNotificationActive, isMonthScrolling } = this.props;
+    if (isMonthScrolling && this.state.notificationActive) {
+      handleOnNotificationActive();
+      this.setState({ notificationActive: false });
+    }
+  }
   handleKeyEvent = event => {
     const { day, onMouseDown, onMouseUp } = this.props;
     if ([13 /* space */, 32 /* enter */].includes(event.keyCode)) {
@@ -31,8 +38,28 @@ class DayCell extends Component {
     }
   };
   handleMouseEvent = event => {
-    const { day, disabled, onPreviewChange, onMouseEnter, onMouseDown, onMouseUp } = this.props;
+    const {
+      day,
+      disabled,
+      onPreviewChange,
+      onMouseEnter,
+      onMouseDown,
+      onMouseUp,
+      handleOnNotificationActive,
+    } = this.props;
     const stateChanges = {};
+
+    const startDate = this.props.ranges.length && this.props.ranges[0].startDate;
+    const isStartDate = isSameDay(startDate, this.props.day);
+
+    if (isStartDate) {
+      this.setState({ notificationActive: true });
+    }
+
+    if (disabled && (event.type === 'mouseleave' || event.type === 'blur')) {
+      this.setState({ notificationActive: false });
+      handleOnNotificationActive && handleOnNotificationActive();
+    }
     if (disabled) {
       onPreviewChange();
       return;
@@ -64,6 +91,13 @@ class DayCell extends Component {
     if (Object.keys(stateChanges).length) {
       this.setState(stateChanges);
     }
+  };
+
+  handleOnDayClick = () => {
+    const startDate = this.props.ranges.length && this.props.ranges[0].startDate;
+    const isNotStartDate = !isSameDay(startDate, this.props.day);
+
+    if (isNotStartDate) this.setState({ notificationActive: true });
   };
   getClassNames = () => {
     const {
@@ -132,6 +166,7 @@ class DayCell extends Component {
       endDate = endDate ? startOfDay(endDate) : null;
       const isInRange =
         (focusedRange[1] === 1 &&
+          !isValid(endDate) &&
           isValid(startDate) &&
           isAfter(day, startDate) &&
           isBefore(day, addDays(minimumTimeFromStart, 1))) ||
@@ -174,7 +209,8 @@ class DayCell extends Component {
   };
 
   render() {
-    const { dayContentRenderer } = this.props;
+    const { dayContentRenderer, dayNotificationRender } = this.props;
+
     return (
       <button
         type="button"
@@ -187,16 +223,19 @@ class DayCell extends Component {
         onPauseCapture={this.handleMouseEvent}
         onKeyDown={this.handleKeyEvent}
         onKeyUp={this.handleKeyEvent}
+        onClick={this.handleOnDayClick}
         className={this.getClassNames(this.props.styles)}
         {...(this.props.disabled || this.props.isPassive ? { tabIndex: -1 } : {})}
         style={{ color: this.props.color }}>
         {this.renderSelectionPlaceholders()}
         {this.renderPreviewPlaceholder()}
         <span className={classnames(this.props.styles.dayNumber)}>
-          {dayContentRenderer?.(this.props.day, this.props.disabled) || (
+          {dayContentRenderer?.(this.props.day) || (
             <span>{format(this.props.day, this.props.dayDisplayFormat)}</span>
           )}
         </span>
+        {this.state.notificationActive &&
+          dayNotificationRender?.(this.props.day, this.props.disabled, this.props.isWithInRangeDay)}
       </button>
     );
   }
@@ -226,8 +265,10 @@ DayCell.propTypes = {
     color: PropTypes.string,
   }),
   onPreviewChange: PropTypes.func,
+  handleOnNotificationActive: PropTypes.func,
   previewColor: PropTypes.string,
   disabled: PropTypes.bool,
+  isMonthScrolling: PropTypes.bool,
   isWithInRangeDay: PropTypes.bool,
   minimumTimeFromStart: PropTypes.object,
   isPassive: PropTypes.bool,
@@ -245,6 +286,7 @@ DayCell.propTypes = {
   onMouseUp: PropTypes.func,
   onMouseEnter: PropTypes.func,
   dayContentRenderer: PropTypes.func,
+  dayNotificationRender: PropTypes.func,
 };
 
 export default DayCell;

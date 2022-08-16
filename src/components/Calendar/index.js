@@ -42,6 +42,7 @@ class Calendar extends PureComponent {
     this.state = {
       monthNames: this.getMonthNames(),
       focusedDate: calcFocusDate(null, props),
+      isMonthScrolling: false,
       drag: {
         status: false,
         range: { startDate: null, endDate: null },
@@ -180,7 +181,7 @@ class Calendar extends PureComponent {
     const visibleMonth = addMonths(minDate, visibleMonths[0] || 0);
     const isFocusedToDifferent = !isSameMonth(visibleMonth, focusedDate);
     if (isFocusedToDifferent && !isFirstRender) {
-      this.setState({ focusedDate: visibleMonth });
+      this.setState({ focusedDate: visibleMonth, isMonthScrolling: true });
       onShownDateChange && onShownDateChange(visibleMonth);
     }
     this.isFirstRender = false;
@@ -254,16 +255,19 @@ class Calendar extends PureComponent {
   renderWeekdays() {
     const now = new Date();
     return (
-      <div className={this.styles.weekDays}>
-        {eachDayOfInterval({
-          start: startOfWeek(now, this.dateOptions),
-          end: endOfWeek(now, this.dateOptions),
-        }).map((day, i) => (
-          <span className={this.styles.weekDay} key={i}>
-            {format(day, this.props.weekdayDisplayFormat, this.dateOptions)}
-          </span>
-        ))}
-      </div>
+      <>
+        <div className={this.styles.weekDays}>
+          {eachDayOfInterval({
+            start: startOfWeek(now, this.dateOptions),
+            end: endOfWeek(now, this.dateOptions),
+          }).map((day, i) => (
+            <span className={this.styles.weekDay} key={i}>
+              {format(day, this.props.weekdayDisplayFormat, this.dateOptions)}
+            </span>
+          ))}
+        </div>
+        {this.props.showWeekDaysDivider && <hr className={this.styles.weekDaysDivider} />}
+      </>
     );
   }
   renderDateDisplay = () => {
@@ -396,6 +400,10 @@ class Calendar extends PureComponent {
     const isLongMonth = differenceInDays(end, start, this.dateOptions) + 1 > 7 * 5;
     return isLongMonth ? scrollArea.longMonthHeight : scrollArea.monthHeight;
   };
+
+  handleOnNotificationActive = () => {
+    this.setState({ isMonthScrolling: false });
+  };
   render() {
     const {
       showDateDisplay,
@@ -474,6 +482,8 @@ class Calendar extends PureComponent {
                       onDragSelectionEnd={this.onDragSelectionEnd}
                       onDragSelectionMove={this.onDragSelectionMove}
                       onMouseLeave={() => onPreviewChange && onPreviewChange()}
+                      handleOnNotificationActive={this.handleOnNotificationActive}
+                      isMonthScrolling={this.state.isMonthScrolling}
                       styles={this.styles}
                       style={
                         isVertical
@@ -516,6 +526,8 @@ class Calendar extends PureComponent {
                   onDragSelectionEnd={this.onDragSelectionEnd}
                   onDragSelectionMove={this.onDragSelectionMove}
                   onMouseLeave={() => onPreviewChange && onPreviewChange()}
+                  handleOnNotificationActive={this.handleOnNotificationActive}
+                  isMonthScrolling={this.state.isMonthScrolling}
                   styles={this.styles}
                   showWeekDays={!isVertical || i === 0}
                   showMonthName={!isVertical || i > 0}
@@ -564,6 +576,7 @@ Calendar.defaultProps = {
   preventSnapRefocus: false,
   ariaLabels: {},
   preventFocusOnDateChange: false,
+  showWeekDaysDivider: false,
 };
 
 Calendar.propTypes = {
@@ -621,6 +634,7 @@ Calendar.propTypes = {
   calendarFocus: PropTypes.string,
   preventFocusOnDateChange: PropTypes.bool,
   preventSnapRefocus: PropTypes.bool,
+  showWeekDaysDivider: PropTypes.bool,
   ariaLabels: ariaLabelsShape,
 };
 

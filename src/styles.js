@@ -9,6 +9,7 @@ export default {
   nextPrevButton: 'rdrNextPrevButton',
   month: 'rdrMonth',
   weekDays: 'rdrWeekDays',
+  weekDaysDivider: 'rdrWeekDaysDivider',
   weekDay: 'rdrWeekDay',
   days: 'rdrDays',
   day: 'rdrDay',
