@@ -55,6 +55,7 @@ class DayCell extends Component {
       handleOnNotificationActive,
       ranges,
       isMobile,
+      focusedRange,
     } = this.props;
     const stateChanges = {};
 
@@ -72,7 +73,8 @@ class DayCell extends Component {
       isStartDate &&
       !startEndSame &&
       event.type !== 'mouseleave' &&
-      event.type !== 'blur'
+      event.type !== 'blur' &&
+      focusedRange[1] === 1
     ) {
       this.setState({ notificationActive: true });
     }
