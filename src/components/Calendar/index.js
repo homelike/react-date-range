@@ -526,8 +526,6 @@ class Calendar extends PureComponent {
                   onDragSelectionEnd={this.onDragSelectionEnd}
                   onDragSelectionMove={this.onDragSelectionMove}
                   onMouseLeave={() => onPreviewChange && onPreviewChange()}
-                  handleOnNotificationActive={this.handleOnNotificationActive}
-                  isMonthScrolling={this.state.isMonthScrolling}
                   styles={this.styles}
                   showWeekDays={!isVertical || i === 0}
                   showMonthName={!isVertical || i > 0}

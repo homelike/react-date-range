@@ -23,6 +23,13 @@ class DayCell extends Component {
       notificationActive: false,
     };
   }
+
+  componentDidMount() {
+    const { handleOnNotificationActive } = this.props;
+    this.setState({ notificationActive: false });
+    handleOnNotificationActive && handleOnNotificationActive();
+  }
+
   componentDidUpdate() {
     const { handleOnNotificationActive, isMonthScrolling } = this.props;
     if (isMonthScrolling && this.state.notificationActive) {
@@ -46,21 +53,35 @@ class DayCell extends Component {
       onMouseDown,
       onMouseUp,
       handleOnNotificationActive,
+      ranges,
+      isMobile,
     } = this.props;
     const stateChanges = {};
 
-    const startDate = this.props.ranges.length && this.props.ranges[0].startDate;
-    const isStartDate = isSameDay(startDate, this.props.day);
+    const range = ranges.length && ranges[0];
+    let startDate = range.startDate;
+    let endDate = range.endDate;
+    startDate = startDate ? endOfDay(startDate) : null;
+    endDate = endDate ? startOfDay(endDate) : null;
 
-    if (isStartDate) {
+    const isStartDate = isSameDay(startDate, this.props.day);
+    const startEndSame = isSameDay(startDate, endDate);
+
+    if (
+      !isMobile &&
+      isStartDate &&
+      !startEndSame &&
+      event.type !== 'mouseleave' &&
+      event.type !== 'blur'
+    ) {
       this.setState({ notificationActive: true });
     }
 
-    if (disabled && (event.type === 'mouseleave' || event.type === 'blur')) {
-      this.setState({ notificationActive: false });
-      handleOnNotificationActive && handleOnNotificationActive();
-    }
     if (disabled) {
+      if (event.type === 'mouseleave') {
+        this.setState({ notificationActive: false });
+        handleOnNotificationActive && handleOnNotificationActive();
+      }
       onPreviewChange();
       return;
     }
@@ -94,10 +115,9 @@ class DayCell extends Component {
   };
 
   handleOnDayClick = () => {
-    const startDate = this.props.ranges.length && this.props.ranges[0].startDate;
-    const isNotStartDate = !isSameDay(startDate, this.props.day);
+    const { disabled } = this.props;
 
-    if (isNotStartDate) this.setState({ notificationActive: true });
+    if (disabled) this.setState({ notificationActive: true });
   };
   getClassNames = () => {
     const {
@@ -269,6 +289,7 @@ DayCell.propTypes = {
   previewColor: PropTypes.string,
   disabled: PropTypes.bool,
   isMonthScrolling: PropTypes.bool,
+  isMobile: PropTypes.bool,
   isWithInRangeDay: PropTypes.bool,
   minimumTimeFromStart: PropTypes.object,
   isPassive: PropTypes.bool,

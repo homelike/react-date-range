@@ -1,6 +1,6 @@
 {
   "name": "@homelike-devs/react-date-range",
-  "version": "1.4.11",
+  "version": "1.4.14",
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
