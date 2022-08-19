@@ -2,13 +2,13 @@
 
 exports[`DefinedRange tests Should render dynamic static label contents correctly 1`] = `
 <div
-  className="rdrDefinedRangesWrapper"
+  className="rdrnDefinedRangesWrapper"
 >
   <div
-    className="rdrStaticRanges"
+    className="rdrnStaticRanges"
   >
     <button
-      className="rdrStaticRange"
+      className="rdrnStaticRange"
       key="0"
       onClick={[Function]}
       onFocus={[Function]}
@@ -22,7 +22,7 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       type="button"
     >
       <span
-        className="rdrStaticRangeLabel"
+        className="rdrnStaticRangeLabel"
         tabIndex={-1}
       >
         <i
@@ -33,7 +33,7 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       </span>
     </button>
     <button
-      className="rdrStaticRange"
+      className="rdrnStaticRange"
       key="1"
       onClick={[Function]}
       onFocus={[Function]}
@@ -47,14 +47,14 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       type="button"
     >
       <span
-        className="rdrStaticRangeLabel"
+        className="rdrnStaticRangeLabel"
         tabIndex={-1}
       >
         Static Label
       </span>
     </button>
     <button
-      className="rdrStaticRange"
+      className="rdrnStaticRange"
       key="2"
       onClick={[Function]}
       onFocus={[Function]}
@@ -68,7 +68,7 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       type="button"
     >
       <span
-        className="rdrStaticRangeLabel"
+        className="rdrnStaticRangeLabel"
         tabIndex={-1}
       >
         <img
@@ -77,7 +77,7 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       </span>
     </button>
     <button
-      className="rdrStaticRange"
+      className="rdrnStaticRange"
       key="3"
       onClick={[Function]}
       onFocus={[Function]}
@@ -91,7 +91,7 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       type="button"
     >
       <span
-        className="rdrStaticRangeLabel"
+        className="rdrnStaticRangeLabel"
         tabIndex={-1}
       >
         <b
@@ -103,7 +103,7 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
     </button>
   </div>
   <div
-    className="rdrInputRanges"
+    className="rdrnInputRanges"
   >
     <InputRangeField
       key="0"
@@ -114,57 +114,57 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       placeholder="-"
       styles={
         Object {
-          "calendarWrapper": "rdrCalendarWrapper",
-          "dateDisplay": "rdrDateDisplay",
-          "dateDisplayItem": "rdrDateDisplayItem",
-          "dateDisplayItemActive": "rdrDateDisplayItemActive",
-          "dateDisplayWrapper": "rdrDateDisplayWrapper",
-          "dateRangePickerWrapper": "rdrDateRangePickerWrapper",
-          "dateRangeWrapper": "rdrDateRangeWrapper",
-          "day": "rdrDay",
-          "dayActive": "rdrDayActive",
-          "dayDisabled": "rdrDayDisabled",
-          "dayEndOfMonth": "rdrDayEndOfMonth",
-          "dayEndOfWeek": "rdrDayEndOfWeek",
-          "dayEndPreview": "rdrDayEndPreview",
-          "dayHovered": "rdrDayHovered",
-          "dayInPreview": "rdrDayInPreview",
-          "dayNumber": "rdrDayNumber",
-          "dayPassive": "rdrDayPassive",
-          "daySelected": "rdrDaySelected",
-          "dayStartOfMonth": "rdrDayStartOfMonth",
-          "dayStartOfWeek": "rdrDayStartOfWeek",
-          "dayStartPreview": "rdrDayStartPreview",
-          "dayToday": "rdrDayToday",
-          "dayWeekend": "rdrDayWeekend",
-          "days": "rdrDays",
-          "definedRangesWrapper": "rdrDefinedRangesWrapper",
-          "endEdge": "rdrEndEdge",
-          "inRange": "rdrInRange",
-          "infiniteMonths": "rdrInfiniteMonths",
-          "inputRange": "rdrInputRange",
-          "inputRangeInput": "rdrInputRangeInput",
-          "inputRanges": "rdrInputRanges",
-          "month": "rdrMonth",
-          "monthAndYearPickers": "rdrMonthAndYearPickers",
-          "monthAndYearWrapper": "rdrMonthAndYearWrapper",
-          "monthName": "rdrMonthName",
-          "monthPicker": "rdrMonthPicker",
-          "months": "rdrMonths",
-          "monthsHorizontal": "rdrMonthsHorizontal",
-          "monthsVertical": "rdrMonthsVertical",
-          "nextButton": "rdrNextButton",
-          "nextPrevButton": "rdrNextPrevButton",
-          "prevButton": "rdrPprevButton",
-          "selected": "rdrSelected",
-          "startEdge": "rdrStartEdge",
-          "staticRange": "rdrStaticRange",
-          "staticRangeLabel": "rdrStaticRangeLabel",
-          "staticRangeSelected": "rdrStaticRangeSelected",
-          "staticRanges": "rdrStaticRanges",
-          "weekDay": "rdrWeekDay",
-          "weekDays": "rdrWeekDays",
-          "yearPicker": "rdrYearPicker",
+          "calendarWrapper": "rdrnCalendarWrapper",
+          "dateDisplay": "rdrnDateDisplay",
+          "dateDisplayItem": "rdrnDateDisplayItem",
+          "dateDisplayItemActive": "rdrnDateDisplayItemActive",
+          "dateDisplayWrapper": "rdrnDateDisplayWrapper",
+          "dateRangePickerWrapper": "rdrnDateRangePickerWrapper",
+          "dateRangeWrapper": "rdrnDateRangeWrapper",
+          "day": "rdrnDay",
+          "dayActive": "rdrnDayActive",
+          "dayDisabled": "rdrnDayDisabled",
+          "dayEndOfMonth": "rdrnDayEndOfMonth",
+          "dayEndOfWeek": "rdrnDayEndOfWeek",
+          "dayEndPreview": "rdrnDayEndPreview",
+          "dayHovered": "rdrnDayHovered",
+          "dayInPreview": "rdrnDayInPreview",
+          "dayNumber": "rdrnDayNumber",
+          "dayPassive": "rdrnDayPassive",
+          "daySelected": "rdrnDaySelected",
+          "dayStartOfMonth": "rdrnDayStartOfMonth",
+          "dayStartOfWeek": "rdrnDayStartOfWeek",
+          "dayStartPreview": "rdrnDayStartPreview",
+          "dayToday": "rdrnDayToday",
+          "dayWeekend": "rdrnDayWeekend",
+          "days": "rdrnDays",
+          "definedRangesWrapper": "rdrnDefinedRangesWrapper",
+          "endEdge": "rdrnEndEdge",
+          "inRange": "rdrnInRange",
+          "infiniteMonths": "rdrnInfiniteMonths",
+          "inputRange": "rdrnInputRange",
+          "inputRangeInput": "rdrnInputRangeInput",
+          "inputRanges": "rdrnInputRanges",
+          "month": "rdrnMonth",
+          "monthAndYearPickers": "rdrnMonthAndYearPickers",
+          "monthAndYearWrapper": "rdrnMonthAndYearWrapper",
+          "monthName": "rdrnMonthName",
+          "monthPicker": "rdrnMonthPicker",
+          "months": "rdrnMonths",
+          "monthsHorizontal": "rdrnMonthsHorizontal",
+          "monthsVertical": "rdrnMonthsVertical",
+          "nextButton": "rdrnNextButton",
+          "nextPrevButton": "rdrnNextPrevButton",
+          "prevButton": "rdrnPprevButton",
+          "selected": "rdrnSelected",
+          "startEdge": "rdrnStartEdge",
+          "staticRange": "rdrnStaticRange",
+          "staticRangeLabel": "rdrnStaticRangeLabel",
+          "staticRangeSelected": "rdrnStaticRangeSelected",
+          "staticRanges": "rdrnStaticRanges",
+          "weekDay": "rdrnWeekDay",
+          "weekDays": "rdrnWeekDays",
+          "yearPicker": "rdrnYearPicker",
         }
       }
       value="-"
@@ -178,57 +178,57 @@ exports[`DefinedRange tests Should render dynamic static label contents correctl
       placeholder="-"
       styles={
         Object {
-          "calendarWrapper": "rdrCalendarWrapper",
-          "dateDisplay": "rdrDateDisplay",
-          "dateDisplayItem": "rdrDateDisplayItem",
-          "dateDisplayItemActive": "rdrDateDisplayItemActive",
-          "dateDisplayWrapper": "rdrDateDisplayWrapper",
-          "dateRangePickerWrapper": "rdrDateRangePickerWrapper",
-          "dateRangeWrapper": "rdrDateRangeWrapper",
-          "day": "rdrDay",
-          "dayActive": "rdrDayActive",
-          "dayDisabled": "rdrDayDisabled",
-          "dayEndOfMonth": "rdrDayEndOfMonth",
-          "dayEndOfWeek": "rdrDayEndOfWeek",
-          "dayEndPreview": "rdrDayEndPreview",
-          "dayHovered": "rdrDayHovered",
-          "dayInPreview": "rdrDayInPreview",
-          "dayNumber": "rdrDayNumber",
-          "dayPassive": "rdrDayPassive",
-          "daySelected": "rdrDaySelected",
-          "dayStartOfMonth": "rdrDayStartOfMonth",
-          "dayStartOfWeek": "rdrDayStartOfWeek",
-          "dayStartPreview": "rdrDayStartPreview",
-          "dayToday": "rdrDayToday",
-          "dayWeekend": "rdrDayWeekend",
-          "days": "rdrDays",
-          "definedRangesWrapper": "rdrDefinedRangesWrapper",
-          "endEdge": "rdrEndEdge",
-          "inRange": "rdrInRange",
-          "infiniteMonths": "rdrInfiniteMonths",
-          "inputRange": "rdrInputRange",
-          "inputRangeInput": "rdrInputRangeInput",
-          "inputRanges": "rdrInputRanges",
-          "month": "rdrMonth",
-          "monthAndYearPickers": "rdrMonthAndYearPickers",
-          "monthAndYearWrapper": "rdrMonthAndYearWrapper",
-          "monthName": "rdrMonthName",
-          "monthPicker": "rdrMonthPicker",
-          "months": "rdrMonths",
-          "monthsHorizontal": "rdrMonthsHorizontal",
-          "monthsVertical": "rdrMonthsVertical",
-          "nextButton": "rdrNextButton",
-          "nextPrevButton": "rdrNextPrevButton",
-          "prevButton": "rdrPprevButton",
-          "selected": "rdrSelected",
-          "startEdge": "rdrStartEdge",
-          "staticRange": "rdrStaticRange",
-          "staticRangeLabel": "rdrStaticRangeLabel",
-          "staticRangeSelected": "rdrStaticRangeSelected",
-          "staticRanges": "rdrStaticRanges",
-          "weekDay": "rdrWeekDay",
-          "weekDays": "rdrWeekDays",
-          "yearPicker": "rdrYearPicker",
+          "calendarWrapper": "rdrnCalendarWrapper",
+          "dateDisplay": "rdrnDateDisplay",
+          "dateDisplayItem": "rdrnDateDisplayItem",
+          "dateDisplayItemActive": "rdrnDateDisplayItemActive",
+          "dateDisplayWrapper": "rdrnDateDisplayWrapper",
+          "dateRangePickerWrapper": "rdrnDateRangePickerWrapper",
+          "dateRangeWrapper": "rdrnDateRangeWrapper",
+          "day": "rdrnDay",
+          "dayActive": "rdrnDayActive",
+          "dayDisabled": "rdrnDayDisabled",
+          "dayEndOfMonth": "rdrnDayEndOfMonth",
+          "dayEndOfWeek": "rdrnDayEndOfWeek",
+          "dayEndPreview": "rdrnDayEndPreview",
+          "dayHovered": "rdrnDayHovered",
+          "dayInPreview": "rdrnDayInPreview",
+          "dayNumber": "rdrnDayNumber",
+          "dayPassive": "rdrnDayPassive",
+          "daySelected": "rdrnDaySelected",
+          "dayStartOfMonth": "rdrnDayStartOfMonth",
+          "dayStartOfWeek": "rdrnDayStartOfWeek",
+          "dayStartPreview": "rdrnDayStartPreview",
+          "dayToday": "rdrnDayToday",
+          "dayWeekend": "rdrnDayWeekend",
+          "days": "rdrnDays",
+          "definedRangesWrapper": "rdrnDefinedRangesWrapper",
+          "endEdge": "rdrnEndEdge",
+          "inRange": "rdrnInRange",
+          "infiniteMonths": "rdrnInfiniteMonths",
+          "inputRange": "rdrnInputRange",
+          "inputRangeInput": "rdrnInputRangeInput",
+          "inputRanges": "rdrnInputRanges",
+          "month": "rdrnMonth",
+          "monthAndYearPickers": "rdrnMonthAndYearPickers",
+          "monthAndYearWrapper": "rdrnMonthAndYearWrapper",
+          "monthName": "rdrnMonthName",
+          "monthPicker": "rdrnMonthPicker",
+          "months": "rdrnMonths",
+          "monthsHorizontal": "rdrnMonthsHorizontal",
+          "monthsVertical": "rdrnMonthsVertical",
+          "nextButton": "rdrnNextButton",
+          "nextPrevButton": "rdrnNextPrevButton",
+          "prevButton": "rdrnPprevButton",
+          "selected": "rdrnSelected",
+          "startEdge": "rdrnStartEdge",
+          "staticRange": "rdrnStaticRange",
+          "staticRangeLabel": "rdrnStaticRangeLabel",
+          "staticRangeSelected": "rdrnStaticRangeSelected",
+          "staticRanges": "rdrnStaticRanges",
+          "weekDay": "rdrnWeekDay",
+          "weekDays": "rdrnWeekDays",
+          "yearPicker": "rdrnYearPicker",
         }
       }
       value="-"

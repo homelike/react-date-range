@@ -1,4 +1,4 @@
-.rdrDay {
+.rdrnDay {
   box-sizing: inherit;
   width: calc(100% / 7);
   position: relative;
@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-.rdrDayNumber {
+.rdrnDayNumber {
   display: block;
   position: relative;
   span{
@@ -14,26 +14,26 @@
   }
 }
 
-.rdrDayDisabled {
+.rdrnDayDisabled {
   cursor: not-allowed;
 }
 
 @supports (-ms-ime-align: auto) {
-  .rdrDay {
+  .rdrnDay {
     flex-basis: 14.285% !important;
   }
 }
 
-.rdrSelected, .rdrInRange, .rdrStartEdge, .rdrEndEdge{
+.rdrnSelected, .rdrnInRange, .rdrnStartEdge, .rdrnEndEdge{
   pointer-events: none;
 }
 
-.rdrInRange{}
+.rdrnInRange{}
 
-.rdrDayStartPreview, .rdrDayInPreview, .rdrDayEndPreview{
+.rdrnDayStartPreview, .rdrnDayInPreview, .rdrnDayEndPreview{
   pointer-events: none;
 }
 
-.rdrDayHovered{}
+.rdrnDayHovered{}
 
-.rdrDayActive{}
+.rdrnDayActive{}
