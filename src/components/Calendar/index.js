@@ -171,7 +171,7 @@ class Calendar extends PureComponent {
     this.props.onRangeFocusChange && this.props.onRangeFocusChange([rangesIndex, rangeItemIndex]);
   };
   handleScroll = () => {
-    const { onShownDateChange, minDate } = this.props;
+    const { onShownDateChange, minDate, scroll } = this.props;
     const { focusedDate } = this.state;
     const { isFirstRender } = this;
 
@@ -180,8 +180,13 @@ class Calendar extends PureComponent {
     if (visibleMonths[0] === undefined) return;
     const visibleMonth = addMonths(minDate, visibleMonths[0] || 0);
     const isFocusedToDifferent = !isSameMonth(visibleMonth, focusedDate);
+    const isMonthScrolling = !isSameMonth(addMonths(visibleMonth, -1), focusedDate);
+
+    if (scroll.enabled && isMonthScrolling && !isFirstRender) {
+      this.setState({ isMonthScrolling });
+    }
     if (isFocusedToDifferent && !isFirstRender) {
-      this.setState({ focusedDate: visibleMonth, isMonthScrolling: true });
+      this.setState({ focusedDate: visibleMonth });
       onShownDateChange && onShownDateChange(visibleMonth);
     }
     this.isFirstRender = false;
