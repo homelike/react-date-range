@@ -198,7 +198,9 @@ class DayCell extends Component {
           isBefore(day, endDate));
       const isStartEdge = !isInRange && isSameDay(day, startDate);
       const isEndEdge = !isInRange && isSameDay(day, endDate);
-      const isFirstAvailableEndDay = !isValid(endDate) && isSameDay(minimumTimeFromStart, day);
+      const isFirstAvailableEndDay =
+        //  !isValid(endDate) && isSameDay(minimumTimeFromStart, day);
+        !isValid(endDate) && isSameDay(minimumTimeFromStart, day) && focusedRange[1] === 1;
       if (isInRange || isStartEdge || isEndEdge || isFirstAvailableEndDay) {
         return [
           ...result,
