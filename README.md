@@ -109,6 +109,7 @@ maxDate                              | Date      |                  | defines ma
 direction                            | String    | 'vertical'       | direction of calendar months. can be `vertical` or `horizontal`
 disabledDates                        | Date[]    | []               | dates that are disabled
 disabledDay                          | Func      |                  | predicate function that disable day fn(date: Date)
+withInRangeDay                       | Func      |                  | predicate function that day not inside avi range  fn(date: Date)
 scroll                               | Object    | { enabled: false }| infinite scroll behaviour configuration. Check out [Infinite Scroll](#infinite-scrolled-mode) section
 showMonthArrow                       | Boolean   | true             | show/hide month arrow button
 navigatorRenderer                    | Func      |                  | renderer for focused date navigation area. fn(currentFocusedDate: Date, changeShownDate: func, props: object)

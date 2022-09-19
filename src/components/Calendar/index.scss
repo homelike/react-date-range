@@ -1,4 +1,4 @@
-.rdrCalendarWrapper {
+.rdrnCalendarWrapper {
   box-sizing: border-box;
   background: #ffffff;
   display: inline-flex;
@@ -6,12 +6,12 @@
   user-select: none;
 }
 
-.rdrDateDisplay{
+.rdrnDateDisplay{
   display: flex;
   justify-content: space-between;
 }
 
-.rdrDateDisplayItem{
+.rdrnDateDisplayItem{
   flex: 1 1;
   width: 0;
   text-align: center;
@@ -27,71 +27,71 @@
   }
 }
 
-.rdrDateDisplayItemActive{}
+.rdrnDateDisplayItemActive{}
 
-.rdrMonthAndYearWrapper {
+.rdrnMonthAndYearWrapper {
   box-sizing: inherit;
   display: flex;
   justify-content: space-between;
 }
 
-.rdrMonthAndYearPickers{
+.rdrnMonthAndYearPickers{
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rdrMonthPicker{}
+.rdrnMonthPicker{}
 
-.rdrYearPicker{}
+.rdrnYearPicker{}
 
-.rdrNextPrevButton {
+.rdrnNextPrevButton {
   box-sizing: inherit;
   cursor: pointer;
   outline: none;
 }
 
-.rdrPprevButton {}
+.rdrnPprevButton {}
 
-.rdrNextButton {}
+.rdrnNextButton {}
 
-.rdrMonths{
+.rdrnMonths{
   display: flex;
 }
 
-.rdrMonthsVertical{
+.rdrnMonthsVertical{
   flex-direction: column;
 }
 
-.rdrMonthsHorizontal > div > div > div{
+.rdrnMonthsHorizontal > div > div > div{
   display: flex;
   flex-direction: row;
 }
 
-.rdrMonth{
+.rdrnMonth{
   width: 27.667em;
 }
 
-.rdrWeekDays{
+.rdrnWeekDays{
   display: flex;
 }
 
-.rdrWeekDay {
+.rdrnWeekDay {
   flex-basis: calc(100% / 7);
   box-sizing: inherit;
   text-align: center;
 }
 
-.rdrDays{
+.rdrnDays{
   display: flex;
   flex-wrap: wrap;
 }
 
-.rdrDateDisplayWrapper{}
+.rdrnDateDisplayWrapper{}
 
-.rdrMonthName{}
+.rdrnMonthName{}
 
-.rdrInfiniteMonths{
+.rdrnInfiniteMonths{
   overflow: auto;
 }

@@ -68,7 +68,7 @@ class DateInput extends PureComponent {
     const { value, invalid } = this.state;
 
     return (
-      <span className={classnames('rdrDateInput', className)}>
+      <span className={classnames('rdrnDateInput', className)}>
         <input
           readOnly={readOnly}
           disabled={disabled}
@@ -80,7 +80,7 @@ class DateInput extends PureComponent {
           onBlur={this.onBlur}
           onFocus={onFocus}
         />
-        {invalid && <span className="rdrWarning">&#9888;</span>}
+        {invalid && <span className="rdrnWarning">&#9888;</span>}
       </span>
     );
   }
